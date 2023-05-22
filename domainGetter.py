@@ -9,12 +9,8 @@ def main(file_name:str,dbName:str):
         data=SeqIO.parse(f'./{fasta}','fasta')
         fasta_file=open(fasta.replace('.fasta','_working_aa.fasta'),'w')
         for i in data:
-            if 'n' not in i.seq:
-                print(i.id)
-                print(fasta)
-                a,b,c=i.id.split(';')[0],i.id.split(';')[1],i.seq.translate()[:-1]
-                if c[0]!='M':
-                    c='M'+c[1:]
+            if 'X' not in i.seq:
+                a,b,c=i.id.split(':')[0],i.id.split(':')[1],i.seq
                 if (a,f'{a}:{b}') in file.index:
                     start,end=file.at[(a,f'{a}:{b}'),'alignStart'],file.at[(a,f'{a}:{b}'),'alignEnd']
                     header,seq=f'{a}:{b} | {start}_{end}',c[int(start):int(end)]
