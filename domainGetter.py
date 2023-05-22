@@ -21,7 +21,7 @@ def main(file_name:str,dbName:str):
 if __name__=='__main__':
     from argparse import ArgumentParser
     parse=ArgumentParser(prog='Fasta translator and domain getter')
-    parse.add_argument('--input','-i',help='Fasta file name',type=str)
+    parse.add_argument('--input','-i',help='Fasta folder name',type=str)
     parse.add_argument('--dataframe','-db',help='DataFrame having domain info',type=str)
     args=parse.parse_args()
     main(file_name=args.input,dbName=args.dataframe)
